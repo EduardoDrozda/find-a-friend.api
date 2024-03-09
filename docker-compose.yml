@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  find-a-friend__db:
+    container_name: find-a-friend__db
+    image: bitnami/postgresql
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: find-a-friend__db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - find-a-friend
+
+networks:
+  find-a-friend:
+    driver: bridge
